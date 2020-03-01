@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+
+    <title>Pioneer Bank Account</title>
+  </head>
+  <body>
+    <div id="login-area" class="form-group login-area container">
+        <h1 class="text-center">Sign In</h1>
+        <input type="email" name="" id="" class="form-control" placeholder="email">
+        <input type="password" name="" id="" class="form-control" placeholder="password">
+        <button id="login" class="btn btn-success">sign in</button>
+    </div>
+    <div id="acc-area" class="account-area container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="deposit account-info">
+                    <h5>Deposit</h5>
+                    <h2>$ <span id="depositAmount">0.00</span> </h2>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="withdraw account-info">
+                    <h5>Withdraw</h5>
+                    <h2>$ <span id="withdrawAmount">0.00</span> </h2>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="balance account-info">
+                    <h5>Balance</h5>
+                    <h2>$ <span id="balance">0.00</span> </h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="operation">
+                    <h1>Deposit</h1>
+                    <input type="text" name="" id="deposit" class="form-control" placeholder="$ amount to deposit">
+                    <button id="depositBtn" class="btn btn-success">Deposit</button>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="operation">
+                    <h1>Withdraw</h1>
+                    <input type="text" name="" id="withdraw" class="form-control" placeholder="$ amount to withdraw">
+                    <button id="withdrawBtn" class="btn btn-success">Withdraw</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    
+    <script>
+        const lgbtn = document.getElementById("login");
+        lgbtn.addEventListener("click", function(){
+            document.getElementById("login-area").style.display = "none";
+            document.getElementById("acc-area").style.display = "block";
+        });
+        document.getElementById("depositBtn").addEventListener("click", function(){
+            const deposit = getIntValue("deposit");
+            addNewValue("depositAmount", deposit);
+            addNewValue("balance", deposit);    
+        });
+        document.getElementById("withdrawBtn").addEventListener("click", function(){
+            const withdraw = getIntValue("withdraw");
+            if(addNewValue("balance", -1*withdraw)){
+                addNewValue("withdrawAmount", withdraw);
+            }
+        })
+
+        function getIntValue(id){
+            const strValue = document.getElementById(id).value;
+            const intValue = parseFloat(strValue);
+            document.getElementById(id).value = "";
+            document.getElementById(id).focus();
+            return intValue;
+        }
+        function addNewValue(id, amount)
+        {
+            const currentStrValue = document.getElementById(id).innerText;
+            const currentIntValue = parseFloat(currentStrValue);
+            if(isNaN(amount)){
+                alert("Invalid Input");
+            }
+            else if(amount<0 && -1*amount>currentIntValue){
+                alert("Insufficient Balance");
+            }
+            else{
+            const total = amount+currentIntValue;
+            document.getElementById(id).innerText = total;
+            return true;
+            }
+        }
+    </script>
+  </body>
+</html>

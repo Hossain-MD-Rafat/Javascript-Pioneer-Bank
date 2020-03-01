@@ -1,0 +1,57 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.login-area{
+    padding: 40px;
+    height: 50%;
+    width: 60%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 5px 5px 10px gray;
+    border-radius: 20px;
+}
+.form-control{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+#login{
+    margin-top: 10px;
+    padding: 10px 20px 12px;
+    font-size: 20px;
+    border-radius: 8px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.account-area{
+    display: none;
+    margin-top: 100px;
+}
+.row{
+    margin-bottom: 100px;
+}
+.deposit{
+    background-color: slateblue;
+}
+.withdraw{
+    background-color: lightsalmon;
+}
+.balance{
+    background-color: orange;
+}
+.account-info{
+    color: white;
+    text-align: center;
+    border-radius: 8px;
+    padding: 20px 0px;
+}
+.operation{
+    height: 300px;
+    box-shadow: 5px 5px 10px gray;
+    padding: 40px;
+    border-radius: 5px;
+}
